@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- here we import cropper js cdn and cropper css -->
+    <!-- import bootstrap -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js'></script>
+    <title>Two Image Combiner</title>
+</head>
+
+<body>
+    <div class="OuterDiv1" id="OuterDiv1">
+        <div class="FirstImage" class="input-group mb-3">
+            <div id="Image1"></div>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="UploadImage1">
+            </div>
+        </div>
+        <div id="Processing">
+            <h1 id="title">Two Image Combiner </h1>
+            <br><br>
+            <select name="options1" id="options1" class="form-select  mb-3" aria-label=".form-select-lg example">
+                <option value="option1">Img1 Mag and Img2 Phase</option>
+                <option value="option2">Img1 Phase and Img2 Mag</option>
+            </select>
+            <br>
+            <button id="Combine" class="btn btn-outline-dark">Combine</button>
+            <div class="options2">
+                <input type="checkbox" id="CheckboxMag">
+                <span>Uniform Magnitude</span>
+                <input type="checkbox" id="CheckboxPhase">
+                <span>Uniform Phase</span>
+            </div>
+        </div>
+        <div class="SecondImage">
+            <div id="Image2"></div>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="UploadImage2">
+            </div>
+        </div>
+    </div>
+    <div id="ResultCont">
+        <div class="FinalImg" id="Final">
+        </div>
+    </div>
+</body>
+<script src="../static/JavaScript/main.js"></script>
+
+</html>
