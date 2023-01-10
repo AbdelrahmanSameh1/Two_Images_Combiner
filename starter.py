@@ -22,6 +22,7 @@ def Decode_Img_saveing(img, path):
 
 def Combine_Uploaded_Images(Boundaries1, Boundaries2, Phase_Checkbox, Mag_Checkbox, Selection):
     First_Img = Transform_Img("static/Imgs/uploaded_imgs/uploaded1.png")
+    # Transform_Img.Result_Img_Saving("path", First_Img.Image)
     Second_Img = Transform_Img("static/Imgs/uploaded_imgs/uploaded2.png")
     Boundaries_Editing_Img1 = Boundaries_Editing(
         Boundaries1, Mag_Checkbox, Phase_Checkbox, First_Img.Trans_To_Gray().Edit_Size(width=639, height=426).Disc_Fourier_Trans(), (Selection == "option1")).IMAGE_CROPPING()

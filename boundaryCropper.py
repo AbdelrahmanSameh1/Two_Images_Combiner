@@ -12,11 +12,14 @@ class Boundaries_Editing:
 
     def IMAGE_CROPPING(self):
         if self.Selection == True:
+            # get the img magnitude after applying fourier to it
             RESULT = np.abs(self.Img_After_Processes)
             RESULT = self.SELECT_CROPPING_INDICES(RESULT)
             if self.Mag_Checkbox == "true":
                 RESULT = np.ones(RESULT.shape)
+
         elif self.Selection == False:
+            # get the img phase after applying fourier to it
             RESULT = np.angle(self.Img_After_Processes)
             RESULT = self.SELECT_CROPPING_INDICES(RESULT)
             if self.Phase_Checkbox == 'true':
@@ -27,6 +30,7 @@ class Boundaries_Editing:
     def SELECT_CROPPING_INDICES(self, result):
         for HEIGHT in range(result.shape[0]):
             for WIDTH in range(result.shape[1]):
+                # we get i and j according to the cropped img
                 if (WIDTH <= self.Boundaries[1][0] or WIDTH >= self.Boundaries[1][1]) or (HEIGHT < self.Boundaries[0][0] or HEIGHT >= self.Boundaries[0][1]):
                     result[HEIGHT][WIDTH] = self.Selection
         return result
