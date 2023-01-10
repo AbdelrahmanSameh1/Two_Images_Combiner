@@ -3,6 +3,7 @@ import cv2
 
 
 class Boundaries_Editing:
+
     def __init__(self, Boundaries, Mag_Checkbox, Phase_Checkbox, Img_After_Processes, Selection):
         self.Boundaries = Boundaries
         self.Selection = Selection
