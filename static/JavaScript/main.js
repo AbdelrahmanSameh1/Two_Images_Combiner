@@ -20,9 +20,16 @@ Phase_Checkbox.addEventListener("change", (object) => {
   main();
 });
 
+
+
 let Image1_File = document.querySelector("#UploadImage1");
 let First_Image = document.querySelector("#Image1");
 let left1, right1, up1, down1;
+let Inverter_Checkbox = document.getElementById("inverter");
+Inverter_Checkbox.addEventListener("change", (object) => {
+  console.log(Inverter_Checkbox.checked)
+  main();
+});
 Image1_File.addEventListener("change", (object) => {
   if (object.target.files.length) {
     // console.log(e.target.files.length);
@@ -42,13 +49,18 @@ Image1_File.addEventListener("change", (object) => {
           movable: false,
           zoomOnWheel: false,
           crop: function (object) {
-            left1 = object.detail.x;
-            right1 = object.detail.width + object.detail.x;
-            up1 = object.detail.y;
-            down1 = object.detail.height + object.detail.y;
+            left11 = object.detail.x;
+            right11 = object.detail.width + object.detail.x;
+            up11 = object.detail.y;
+            down11 = object.detail.height + object.detail.y;
+              
           },
           // after cropping we call main() function
           cropend: function (object) {
+            console.log(left1)
+            console.log(right1)
+            console.log(up1)
+            console.log(down1)
             main();
           },
         });
@@ -77,10 +89,11 @@ Image2_File.addEventListener("change", (object) => {
           zoomOnWheel: false,
           movable: false,
           crop: function (object) {
-            left2 = object.detail.x;
-            right2 = object.detail.width + object.detail.x;
-            up2 = object.detail.y;
-            down2 = object.detail.height + object.detail.y;
+            left22 = object.detail.x;
+            right22 = object.detail.width + object.detail.x;
+            up22 = object.detail.y;
+            down22 = object.detail.height + object.detail.y;
+
           },
           cropend: function (object) {
             main();
@@ -97,9 +110,34 @@ Combine.addEventListener("click", (object) => {
   main();
 });
 
+
+
+
+
+
 function main() {
-  console.log(left1)
-  console.log(right1)
+  if (Inverter_Checkbox.checked) {
+    left1 = 0;
+    right1 = 230;
+    up1 = 145;
+    down1 = 345;
+    left2 = 0;
+    right2 = 230;
+    up2 = 145;
+    down2 = 345;
+  } else {
+    left1 = left11;
+    right1 = right11;
+    up1 = up11;
+    down1 = down11;
+    left2 = left22;
+    right2 = right22;
+    up2 = up22;
+    down2 = down22;
+
+  }
+  // console.log(left1);
+  // console.log(right1);
   const Selection = document.getElementById("options1");
   if (Encoded_Img1 == "" || Encoded_Img2 == "") {
     throw "Error : Please Upload The Images ";
